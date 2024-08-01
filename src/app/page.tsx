@@ -21,8 +21,8 @@ const LandingPage: React.FC = () => {
           />
         </div>
         <section className="cta">
-          <Link href="/register" className="btn">
-            Register / Login
+          <Link href="/login" className="btn">
+            Login
           </Link>
           <Link href="/events" className="btn btn-secondary">
             Find Events
