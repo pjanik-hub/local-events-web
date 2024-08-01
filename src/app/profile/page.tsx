@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import Link from "next/link";
 
 export default async function ProfileComponent() {
   const session = await auth();
@@ -6,8 +7,15 @@ export default async function ProfileComponent() {
   if (!session?.user) return <div>Not authenticated</div>;
 
   return (
-    <div>
-      <p>profile works, welcome {session?.user.name}</p>
-    </div>
+    <main>
+      <nav>
+        <Link href="/" className="btn">
+          Home
+        </Link>
+      </nav>
+      <section>
+        <p>Welcome {session?.user.name}</p>
+      </section>
+    </main>
   );
 }

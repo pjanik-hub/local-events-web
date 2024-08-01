@@ -1,9 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./Register.module.css";
-import { signIn } from "@/auth";
+import { auth, signIn } from "@/auth";
+import { redirect } from "next/navigation";
 
-const RegisterLoginPage: React.FC = () => {
+const RegisterLoginPage: React.FC = async () => {
+  const session = await auth();
+
+  if (session?.user) redirect("/profile");
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Register</h1>

@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { auth } from "@/auth";
 
-const LandingPage: React.FC = () => {
+const LandingPage: React.FC = async () => {
+  const session = await auth();
+
   return (
     <div className="container">
       <header>
@@ -22,7 +25,7 @@ const LandingPage: React.FC = () => {
         </div>
         <section className="cta">
           <Link href="/login" className="btn">
-            Login
+            {session?.user ? "Dashboard" : "Login"}
           </Link>
           <Link href="/events" className="btn btn-secondary">
             Find Events
